@@ -451,7 +451,13 @@
           </div>
         </div>
 
-        <div class="license-generated-box mt-4">
+        <div class="paypal-checkout-box mt-4">
+          <label class="modal-label text-lime font-bold mb-2">Pay via PayPal or Credit Card:</label>
+          <!-- PayPal Smart Buttons Container -->
+          <div id="paypal-button-container" class="mt-2"></div>
+        </div>
+
+        <div class="license-generated-box mt-4 hidden" id="license-result-box">
           <label class="modal-label">Generated Instant License Key:</label>
           <div class="key-display-wrapper">
             <code id="modal-generated-key">SPRING-30DAY-2026-X89F</code>
@@ -463,9 +469,9 @@
         </div>
 
         <div class="modal-actions mt-6">
-          <button id="activate-now-btn" class="btn-primary-glow w-full">
-            <i data-lucide="key"></i>
-            <span>Open Panel &amp; Activate Key</span>
+          <button id="activate-now-btn" class="btn-primary-glow w-full hidden">
+            <i data-lucide="download"></i>
+            <span>Download SpringLoader.exe Now</span>
           </button>
         </div>
       </div>
@@ -474,6 +480,9 @@
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
+
+  <!-- PayPal SDK (Replace client-id=sb with your Live PayPal Client ID from developer.paypal.com) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
   <!-- Application Script -->
   <script src="app.js"></script>

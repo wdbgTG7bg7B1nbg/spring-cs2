@@ -469,11 +469,73 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalGenKey = document.getElementById('modal-generated-key');
     const copyModalKeyBtn = document.getElementById('copy-modal-key-btn');
     const activateNowBtn = document.getElementById('activate-now-btn');
+    const paypalContainer = document.getElementById('paypal-button-container');
+    const licenseResultBox = document.getElementById('license-result-box');
 
     function generateKey(tier) {
       const chars = '0123456789ABCDEF';
       const randSeg = Array.from({ length: 4 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
       return `SPRING-${tier}DAY-2026-${randSeg}`;
+    }
+
+    function renderPayPalButtons(tierDays, priceAmount) {
+      if (!window.paypal || !paypalContainer) return;
+      paypalContainer.innerHTML = ''; // Clear previous button instance
+
+      window.paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+          label: 'pay'
+        },
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{
+              description: `Spring CS2 Client - ${tierDays} Days Access`,
+              amount: {
+                currency_code: 'USD',
+                value: priceAmount
+              }
+            }]
+          });
+        },
+        onApprove: (data, actions) => {
+          return actions.order.capture().then((details) => {
+            const isHu = currentLang === 'hu';
+            const newKey = generateKey(tierDays);
+
+            // Grant active subscription
+            const addedDays = parseInt(tierDays) || 30;
+            const curExp = localStorage.getItem('spring_expiry');
+            const baseDate = (curExp && new Date(curExp) > new Date()) ? new Date(curExp) : new Date();
+            const newExp = new Date(baseDate.getTime() + addedDays * 24 * 60 * 60 * 1000).toISOString();
+            localStorage.setItem('spring_expiry', newExp);
+            localStorage.setItem('spring_sub_active', 'true');
+
+            // Show License key display
+            if (modalGenKey) modalGenKey.textContent = newKey;
+            if (licenseResultBox) licenseResultBox.classList.remove('hidden');
+            if (activateNowBtn) activateNowBtn.classList.remove('hidden');
+            if (paypalContainer) paypalContainer.classList.add('hidden');
+
+            showToast(isHu ? '🎉 Fizetés sikeres! Licenc aktiválva és letöltés megkezdődött.' : '🎉 Payment Successful! License unlocked & download started.', 'success');
+
+            // Trigger instant download of SpringLoader.exe
+            setTimeout(() => {
+              const link = document.createElement('a');
+              link.href = 'SpringLoader.exe';
+              link.download = 'SpringLoader.exe';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }, 1000);
+          });
+        },
+        onError: (err) => {
+          showToast(currentLang === 'hu' ? '❌ PayPal fizetési hiba történt.' : '❌ PayPal transaction failed. Please try again.', 'error');
+        }
+      }).render('#paypal-button-container');
     }
 
     if (buyActionBtn && checkoutModal) {
@@ -482,13 +544,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const price = row ? row.dataset.price : '7.99';
         const isHu = currentLang === 'hu';
 
-        const newKey = generateKey(selectedTier);
-        if (modalGenKey) modalGenKey.textContent = newKey;
-
         if (modalTierTitle) {
           modalTierTitle.textContent = isHu 
-            ? `Előfizetés véglegesítése: ${selectedTier} Nap` 
-            : `Complete Subscription: ${selectedTier} Days`;
+            ? `Előfizetés vásárlása: ${selectedTier} Nap` 
+            : `PayPal Subscription: ${selectedTier} Days`;
         }
         if (modalTierDetails) {
           modalTierDetails.textContent = isHu
@@ -496,6 +555,11 @@ document.addEventListener('DOMContentLoaded', () => {
             : `${selectedTier} Days Unlimited Access • $${price}`;
         }
 
+        if (licenseResultBox) licenseResultBox.classList.add('hidden');
+        if (activateNowBtn) activateNowBtn.classList.add('hidden');
+        if (paypalContainer) paypalContainer.classList.remove('hidden');
+
+        renderPayPalButtons(selectedTier, price);
         checkoutModal.classList.remove('hidden');
         initLucideIcons();
       });
@@ -525,11 +589,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    if (activateNowBtn && modalGenKey) {
+    if (activateNowBtn) {
       activateNowBtn.addEventListener('click', () => {
-        const key = modalGenKey.textContent.trim();
-        sessionStorage.setItem('pending_spring_key', key);
-        window.location.href = 'panel.html#keys';
+        const link = document.createElement('a');
+        link.href = 'SpringLoader.exe';
+        link.download = 'SpringLoader.exe';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       });
     }
 
@@ -664,6 +731,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const dlBtn = document.getElementById('download-client-btn');
     if (dlBtn) {
       dlBtn.addEventListener('click', () => {
+        const isHu = currentLang === 'hu';
+        const curExp = localStorage.getItem('spring_expiry');
+        const hasActiveSub = localStorage.getItem('spring_sub_active') === 'true' || (curExp && new Date(curExp) > new Date());
+
+        if (!hasActiveSub) {
+          showToast(isHu ? '🔒 Aktív előfizetés szükséges a letöltéshez! Kérjük fizess PayPal-lal a hozzáféréshez.' : '🔒 Active subscription required! Please complete PayPal payment to unlock download.', 'error');
+          
+          const checkoutModal = document.getElementById('checkout-modal');
+          if (checkoutModal) {
+            if (typeof renderPayPalButtons === 'function') renderPayPalButtons('30', '7.99');
+            checkoutModal.classList.remove('hidden');
+          }
+          return;
+        }
+
         const orig = dlBtn.innerHTML;
         dlBtn.disabled = true;
 

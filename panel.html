@@ -356,8 +356,59 @@
     </div>
   </div>
 
+  <!-- Interactive Checkout & Instant PayPal Paywall Modal -->
+  <div id="checkout-modal" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i data-lucide="shield-alert" class="text-lime"></i>
+          <h3 id="modal-tier-title">Unlock SpringLoader.exe Access</h3>
+        </div>
+        <button id="close-modal-btn" class="modal-close-btn" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="checkout-product-preview">
+          <img src="image copy.png" alt="Spring mascot" class="modal-mascot-img">
+          <div class="preview-text">
+            <h4 class="preview-name">spring CS2 Subtick Client</h4>
+            <p id="modal-tier-details" class="preview-desc">30 Days Unlimited Access • $7.99</p>
+          </div>
+        </div>
+
+        <div class="paypal-checkout-box mt-4">
+          <label class="modal-label text-lime font-bold mb-2">Pay via PayPal or Credit Card to Unlock Download:</label>
+          <!-- PayPal Smart Buttons Container -->
+          <div id="paypal-button-container" class="mt-2"></div>
+        </div>
+
+        <div class="license-generated-box mt-4 hidden" id="license-result-box">
+          <label class="modal-label">Generated Instant License Key:</label>
+          <div class="key-display-wrapper">
+            <code id="modal-generated-key">SPRING-30DAY-2026-X89F</code>
+            <button id="copy-modal-key-btn" class="btn-copy-code" title="Copy Key">
+              <i data-lucide="copy"></i>
+            </button>
+          </div>
+          <p class="modal-hint">License unlocked! Your download has started automatically.</p>
+        </div>
+
+        <div class="modal-actions mt-6">
+          <button id="activate-now-btn" class="btn-primary-glow w-full hidden">
+            <i data-lucide="download"></i>
+            <span>Download SpringLoader.exe Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Container -->
   <div id="toast-container" class="toast-container"></div>
+
+  <!-- PayPal SDK (Replace client-id=sb with your Live PayPal Client ID from developer.paypal.com) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
   <!-- Panel Logic Script -->
   <script src="app.js"></script>
