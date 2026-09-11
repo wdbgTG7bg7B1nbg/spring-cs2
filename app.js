@@ -44,6 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   applyTheme(currentTheme);
 
+  // --- Scroll Reveal Entrance Animations ---
+  const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.section-container, .feature-card, .panel-card, .spotlight-grid').forEach(el => {
+    el.classList.add('reveal-on-scroll');
+    scrollObserver.observe(el);
+  });
+
   // --- Draggable Website HUD Interface Engine ---
   function makeElementDraggable(elmnt, container) {
     if (!elmnt || !container) return;
