@@ -55,22 +55,28 @@
         </a>
       </div>
 
-      <!-- Language Selector & CTA -->
-      <div class="nav-actions">
-        <div class="lang-dropdown">
-          <button id="lang-btn" class="lang-btn" aria-label="Language selector">
-            <i data-lucide="globe" class="icon-sm"></i>
-            <span id="current-lang-text">EN</span>
-            <i data-lucide="chevron-down" class="icon-xs arrow-lang"></i>
+        <!-- Language Selector & Theme Toggle & CTA -->
+        <div class="nav-actions">
+          <button id="theme-toggle-btn" class="lang-btn" aria-label="Toggle Theme">
+            <i data-lucide="moon" class="icon-sm theme-icon-dark"></i>
+            <i data-lucide="sun" class="icon-sm theme-icon-light hidden"></i>
+            <span id="theme-text">Dark</span>
           </button>
-          <div id="lang-menu" class="lang-menu glass-panel hidden">
-            <button class="lang-option active" data-lang="en">🇬🇧 English (EN)</button>
-            <button class="lang-option" data-lang="hu">🇭🇺 Magyar (HU)</button>
-          </div>
-        </div>
 
-        <a href="panel.html" class="btn-nav-buy"><span data-i18n="btn_login_panel">Open Panel</span></a>
-      </div>
+          <div class="lang-dropdown">
+            <button id="lang-btn" class="lang-btn" aria-label="Language selector">
+              <i data-lucide="globe" class="icon-sm"></i>
+              <span id="current-lang-text">EN</span>
+              <i data-lucide="chevron-down" class="icon-xs arrow-lang"></i>
+            </button>
+            <div id="lang-menu" class="lang-menu glass-panel hidden">
+              <button class="lang-option active" data-lang="en">🇬🇧 English (EN)</button>
+              <button class="lang-option" data-lang="hu">🇭🇺 Magyar (HU)</button>
+            </div>
+          </div>
+
+          <a href="panel.html" class="btn-nav-buy"><span data-i18n="btn_login_panel">Open Panel</span></a>
+        </div>
     </nav>
   </header>
 
@@ -203,18 +209,41 @@
       </div>
 
       <div class="dynamic-island-demo-grid">
-        <!-- Interactive Widget Preview -->
+        <!-- Interactive Widget Preview (Fully Draggable HUD Simulator) -->
         <div class="island-widget-wrapper glass-panel">
-          <div class="island-screen-bar">
-            <!-- Dynamic Island Interactive Component -->
-            <div id="island-pill" class="island-pill island-state-media">
+          <div class="hud-screen-container" id="hud-canvas">
+            <!-- 1. Draggable Dynamic Island Component -->
+            <div id="island-pill" class="island-pill island-state-media draggable-hud-element" style="top: 14px; left: 50%; transform: translateX(-50%);">
               <!-- Content injected by app.js -->
+            </div>
+
+            <!-- 2. Draggable Keybinds HUD List -->
+            <div id="draggable-keybinds" class="draggable-hud-element glass-panel" style="top: 18px; right: 18px; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(132,204,22,0.3); background: rgba(10,10,18,0.85); min-width: 140px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span style="font-size:10px; font-weight:bold; color:#a3e635;">KEYBINDS</span>
+                <span style="font-size:9px; color:#888;">[DRAG ME]</span>
+              </div>
+              <div style="font-size:10px; color:#fff; display:flex; justify-content:space-between;"><span>Bhop</span><span style="color:#a3e635; font-weight:bold;">[SPACE]</span></div>
+              <div style="font-size:10px; color:#fff; display:flex; justify-content:space-between;"><span>EdgeBug</span><span style="color:#a3e635; font-weight:bold;">[1.8ms]</span></div>
+              <div style="font-size:10px; color:#fff; display:flex; justify-content:space-between;"><span>3rd Person</span><span style="color:#06b6d4; font-weight:bold;">[V]</span></div>
+            </div>
+
+            <!-- 3. Center Crosshair & Sonar Sweep Radar -->
+            <div class="hud-crosshair-center">
+              <div class="sonar-radar-ring"></div>
+              <div style="position:absolute; top:50%; left:50%; width:4px; height:4px; background:#a3e635; border-radius:2px; transform:translate(-50%,-50%);"></div>
+            </div>
+
+            <!-- 4. Draggable Speedometer Gauge -->
+            <div id="draggable-speedo" class="draggable-hud-element glass-panel" style="bottom: 18px; left: 18px; padding: 8px 12px; border-radius: 10px; background: rgba(10,10,18,0.85);">
+              <span style="font-size:9px; font-weight:bold; color:#06b6d4; margin-right:6px;">VELOCITY:</span>
+              <span style="font-size:11px; font-weight:bold; color:#fff;" id="demo-speed-val">250.0 u/s</span>
             </div>
           </div>
 
           <div class="island-controls-hint">
-            <i data-lucide="sparkles" class="text-lime"></i>
-            <span data-i18n="island_hint">Interactive Dynamic Island simulator — pick a category on the right</span>
+            <i data-lucide="grab" class="text-lime"></i>
+            <span data-i18n="island_hint">Drag &amp; drop any HUD element around the screen simulator!</span>
           </div>
         </div>
 

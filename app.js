@@ -17,6 +17,126 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) window.lucide.createIcons();
   }
 
+  // --- Light / Dark Theme Switcher ---
+  const themeBtn = document.getElementById('theme-toggle-btn');
+  const themeText = document.getElementById('theme-text');
+  let currentTheme = localStorage.getItem('spring_theme') || 'dark';
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    localStorage.setItem('spring_theme', theme);
+    document.documentElement.classList.toggle('light', theme === 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+
+    if (themeText) themeText.textContent = theme === 'light' ? 'Light' : 'Dark';
+    const darkIcon = document.querySelector('.theme-icon-dark');
+    const lightIcon = document.querySelector('.theme-icon-light');
+    if (darkIcon && lightIcon) {
+      darkIcon.classList.toggle('hidden', theme === 'light');
+      lightIcon.classList.toggle('hidden', theme === 'dark');
+    }
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  }
+  applyTheme(currentTheme);
+
+  // --- Draggable Website HUD Interface Engine ---
+  function makeElementDraggable(elmnt, container) {
+    if (!elmnt || !container) return;
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+    elmnt.onmousedown = dragMouseDown;
+    elmnt.ontouchstart = dragTouchStart;
+
+    function dragMouseDown(e) {
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      elmnt.classList.add('is-dragging');
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+
+      let newTop = elmnt.offsetTop - pos2;
+      let newLeft = elmnt.offsetLeft - pos1;
+
+      // Container bounds check
+      const maxLeft = container.clientWidth - elmnt.offsetWidth;
+      const maxTop = container.clientHeight - elmnt.offsetHeight;
+      if (newLeft < 0) newLeft = 0;
+      if (newTop < 0) newTop = 0;
+      if (newLeft > maxLeft) newLeft = maxLeft;
+      if (newTop > maxTop) newTop = maxTop;
+
+      elmnt.style.top = newTop + "px";
+      elmnt.style.left = newLeft + "px";
+      elmnt.style.transform = "none";
+    }
+
+    function closeDragElement() {
+      elmnt.classList.remove('is-dragging');
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+
+    function dragTouchStart(e) {
+      if (e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      pos3 = touch.clientX;
+      pos4 = touch.clientY;
+      elmnt.classList.add('is-dragging');
+      document.ontouchend = closeTouchDrag;
+      document.ontouchmove = touchDrag;
+    }
+
+    function touchDrag(e) {
+      if (e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      pos1 = pos3 - touch.clientX;
+      pos2 = pos4 - touch.clientY;
+      pos3 = touch.clientX;
+      pos4 = touch.clientY;
+
+      let newTop = elmnt.offsetTop - pos2;
+      let newLeft = elmnt.offsetLeft - pos1;
+      const maxLeft = container.clientWidth - elmnt.offsetWidth;
+      const maxTop = container.clientHeight - elmnt.offsetHeight;
+      if (newLeft < 0) newLeft = 0;
+      if (newTop < 0) newTop = 0;
+      if (newLeft > maxLeft) newLeft = maxLeft;
+      if (newTop > maxTop) newTop = maxTop;
+
+      elmnt.style.top = newTop + "px";
+      elmnt.style.left = newLeft + "px";
+      elmnt.style.transform = "none";
+    }
+
+    function closeTouchDrag() {
+      elmnt.classList.remove('is-dragging');
+      document.ontouchend = null;
+      document.ontouchmove = null;
+    }
+  }
+
+  // Initialize Draggable Elements on HUD Screen Simulator
+  const hudCanvas = document.getElementById('hud-canvas');
+  if (hudCanvas) {
+    makeElementDraggable(document.getElementById('island-pill'), hudCanvas);
+    makeElementDraggable(document.getElementById('draggable-keybinds'), hudCanvas);
+    makeElementDraggable(document.getElementById('draggable-speedo'), hudCanvas);
+  }
+
   function showToast(msg, type = 'success') {
     const tc = document.getElementById('toast-container');
     if (!tc) return;
@@ -732,19 +852,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dlBtn) {
       dlBtn.addEventListener('click', () => {
         const isHu = currentLang === 'hu';
-        const curExp = localStorage.getItem('spring_expiry');
-        const hasActiveSub = localStorage.getItem('spring_sub_active') === 'true' || (curExp && new Date(curExp) > new Date());
-
-        if (!hasActiveSub) {
-          showToast(isHu ? '🔒 Aktív előfizetés szükséges a letöltéshez! Kérjük fizess PayPal-lal a hozzáféréshez.' : '🔒 Active subscription required! Please complete PayPal payment to unlock download.', 'error');
-          
-          const checkoutModal = document.getElementById('checkout-modal');
-          if (checkoutModal) {
-            if (typeof renderPayPalButtons === 'function') renderPayPalButtons('30', '7.99');
-            checkoutModal.classList.remove('hidden');
-          }
-          return;
-        }
+        // Software locked until full launch phase is completed
+        showToast(isHu ? '🔒 A szoftver letöltése zárva van a végső kiadás befejezéséig! Kérjük várj a hivatalos indulásra.' : '🔒 Software downloads are locked until the full release launch is complete! Stay tuned.', 'info');
+        return;
 
         const orig = dlBtn.innerHTML;
         dlBtn.disabled = true;
