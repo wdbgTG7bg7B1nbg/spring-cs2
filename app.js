@@ -749,7 +749,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const orig = dlBtn.innerHTML;
         dlBtn.disabled = true;
 
-        const isHu = currentLang === 'hu';
         const steps = isHu ? [
           [0,    '<i data-lucide="loader-2"></i> <span>Letöltés előkészítése...</span>'],
           [800,  '<i data-lucide="shield-check"></i> <span>Licenc ellenőrzése...</span>'],

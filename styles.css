@@ -96,6 +96,7 @@ body {
 /* Gradient Text */
 .gradient-text {
   background: linear-gradient(135deg, #a3e635 0%, #4ade80 50%, #22d3ee 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -104,7 +105,8 @@ body {
 .navbar-header {
   position: fixed;
   top: 16px;
-  inset-x: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -962,7 +964,8 @@ body {
 .panel-header {
   position: fixed;
   top: 0;
-  inset-x: 0;
+  left: 0;
+  right: 0;
   height: 70px;
   background: rgba(14, 14, 17, 0.85);
   backdrop-filter: blur(20px);
