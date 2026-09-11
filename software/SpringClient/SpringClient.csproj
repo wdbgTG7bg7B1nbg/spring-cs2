@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationTitle>Spring CS2 Client</ApplicationTitle>
+    <AssemblyTitle>Spring CS2 Client</AssemblyTitle>
+    <Product>Spring Subtick Client</Product>
+    <Version>2.4.1</Version>
+    <FileVersion>2.4.1.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="mascot_hero.png" />
+    <Resource Include="mascot_angel.png" />
+    <Resource Include="mascot_sitting.png" />
+  </ItemGroup>
+
+</Project>

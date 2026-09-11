@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>spring — User Panel &amp; Cloud Manager</title>
+  <meta name="description" content="spring user panel. manage active subscriptions, cloud configs, key activations and hwid resets.">
+  <meta name="theme-color" content="#0e0e11">
+  <link rel="canonical" href="https://rykga.com/panel.html">
+  <meta property="og:title" content="spring — CS2 User Panel &amp; Cloud Manager">
+  <meta property="og:description" content="Manage subscriptions, download SpringLoader.exe, and sync cloud presets.">
+  <meta property="og:url" content="https://rykga.com/panel.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-bg-base text-text-primary font-sans antialiased panel-body">
+
+  <!-- Ambient Mesh Background -->
+  <div class="hero-bg-orbs">
+    <div class="hero-orb orb-primary"></div>
+    <div class="hero-orb orb-accent"></div>
+    <div class="bg-wallpaper"></div>
+  </div>
+
+  <!-- Panel Top Navigation Bar -->
+  <header class="panel-header">
+    <div class="panel-nav-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo-icon">
+          <span class="logo-dot"></span>
+        </div>
+        <span class="brand-name">spring <span class="panel-tag">PANEL</span></span>
+      </a>
+
+      <div class="panel-user-bar">
+        <!-- Language Switcher in Panel -->
+        <div class="lang-dropdown">
+          <button id="lang-btn" class="lang-btn" aria-label="Language selector">
+            <i data-lucide="globe" class="icon-sm"></i>
+            <span id="current-lang-text">EN</span>
+            <i data-lucide="chevron-down" class="icon-xs arrow-lang"></i>
+          </button>
+          <div id="lang-menu" class="lang-menu glass-panel hidden">
+            <button class="lang-option active" data-lang="en">🇬🇧 English (EN)</button>
+            <button class="lang-option" data-lang="hu">🇭🇺 Magyar (HU)</button>
+          </div>
+        </div>
+
+        <div class="user-info-chip">
+          <img src="image.png" alt="User avatar" class="user-avatar-mini">
+          <div class="user-name-group">
+            <span class="user-name">LO</span>
+            <span class="sub-badge active" id="badge-sub-status"><span class="pulse-dot"></span> 30 DAYS ACTIVE</span>
+          </div>
+        </div>
+
+        <a href="index.html" class="btn-secondary-glass btn-sm">
+          <i data-lucide="arrow-left"></i>
+          <span data-i18n="p_nav_home">Back to Home</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="panel-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="panel-sidebar glass-panel">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item active" data-tab="overview">
+          <i data-lucide="layout-dashboard"></i>
+          <span data-i18n="p_tab_overview">Overview</span>
+        </li>
+        <li class="sidebar-item" data-tab="keys">
+          <i data-lucide="key-round"></i>
+          <span data-i18n="p_tab_keys">Activate Key</span>
+        </li>
+        <li class="sidebar-item" data-tab="configs">
+          <i data-lucide="cloud-cog"></i>
+          <span data-i18n="p_tab_configs">Cloud Configs</span>
+        </li>
+        <li class="sidebar-item" data-tab="hwid">
+          <i data-lucide="cpu"></i>
+          <span data-i18n="p_tab_hwid">HWID Reset</span>
+        </li>
+        <li class="sidebar-item" data-tab="support">
+          <i data-lucide="life-buoy"></i>
+          <span data-i18n="p_tab_support">Support & Tickets</span>
+        </li>
+      </ul>
+
+      <!-- Angel Mascot Box in Sidebar -->
+      <div class="sidebar-mascot-card">
+        <img src="image copy.png" alt="Angel mascot" class="sidebar-mascot-img">
+        <div class="mascot-text">
+          <p class="mascot-title">spring v2.4.1</p>
+          <p class="mascot-status">🟢 Undetected (VAC-Live)</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Panel Content View -->
+    <main class="panel-main-content">
+
+      <!-- SECTION 1: OVERVIEW DASHBOARD -->
+      <section id="tab-overview" class="panel-tab-page active">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading" data-i18n="p_welcome_title">Welcome back, LO!</h1>
+            <p class="page-sub" data-i18n="p_welcome_desc">Manage your active license, cloud configurations, and client modules.</p>
+          </div>
+          <button id="download-client-btn" class="btn-primary-glow">
+            <i data-lucide="download"></i>
+            <span data-i18n="p_btn_download">Download Spring Loader (.exe)</span>
+          </button>
+        </div>
+
+        <!-- Quick Stats Widgets Grid -->
+        <div class="panel-stats-grid mt-6">
+          <div class="panel-card glass-panel">
+            <div class="card-icon-box text-lime"><i data-lucide="shield-check"></i></div>
+            <div class="card-meta">
+              <span class="card-label" data-i18n="p_stat_sub_title">Subscription Status</span>
+              <span class="card-value text-lime" id="sub-status-val">30 Days Active</span>
+              <span class="card-sub" id="sub-days-left">Remaining: 24 days (until 05.10.2026)</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel">
+            <div class="card-icon-box text-cyan"><i data-lucide="cpu"></i></div>
+            <div class="card-meta">
+              <span class="card-label" data-i18n="p_stat_hwid_title">HWID Lock</span>
+              <span class="card-value text-cyan" id="hwid-status-text">Attached</span>
+              <span class="card-sub" id="hwid-pc-name">PC-DESKTOP-9X82F</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel">
+            <div class="card-icon-box text-rose"><i data-lucide="cloud"></i></div>
+            <div class="card-meta">
+              <span class="card-label" data-i18n="p_stat_cfg_title">Cloud Configs</span>
+              <span class="card-value" id="configs-count-stat">3 / 10 Slots</span>
+              <span class="card-sub" data-i18n="p_stat_sync_on">Auto-sync enabled</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel">
+            <div class="card-icon-box text-emerald"><i data-lucide="sparkles"></i></div>
+            <div class="card-meta">
+              <span class="card-label" data-i18n="p_stat_ver_title">Product Build</span>
+              <span class="card-value">v2.4.1 (CS2 Subtick)</span>
+              <span class="card-sub" data-i18n="p_stat_up_to_date">Up to date & secure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Announcements Banner -->
+        <div class="panel-card glass-panel mt-6 announcement-card">
+          <div class="announcement-header">
+            <div class="announcement-title">
+              <i data-lucide="bell" class="text-lime"></i>
+              <h3 data-i18n="p_news_title">Latest Update: Subtick Movement v2.4</h3>
+            </div>
+            <span class="announcement-date" data-i18n="p_news_date">Yesterday, 18:40</span>
+          </div>
+          <p class="announcement-body" data-i18n="p_news_body">
+            We updated the bunnyhop and edgebug engine for the latest Counter-Strike 2 patches! Full Dynamic Island synchronization and instant cloud configs hot-reload are now active.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: KEY ACTIVATION -->
+      <section id="tab-keys" class="panel-tab-page hidden">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading" data-i18n="p_keys_heading">Activate License Key</h1>
+            <p class="page-sub" data-i18n="p_keys_sub">Enter your 16-character license or promo token received upon purchase.</p>
+          </div>
+        </div>
+
+        <div class="panel-card glass-panel mt-6 max-w-lg">
+          <form id="key-form" class="key-activation-form">
+            <div class="form-group">
+              <label for="license-key-input" data-i18n="p_key_label">License Key</label>
+              <div class="input-icon-wrapper">
+                <i data-lucide="key" class="input-icon text-lime"></i>
+                <input type="text" id="license-key-input" class="form-input" placeholder="SPRING-XXXX-XXXX-XXXX" required autocomplete="off">
+              </div>
+              <p class="form-hint" data-i18n="p_key_hint">Example: <code>SPRING-30DAY-2026-X89F</code></p>
+            </div>
+
+            <button type="submit" class="btn-primary-glow w-full">
+              <i data-lucide="check-circle-2"></i>
+              <span data-i18n="p_btn_activate">Activate License</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECTION 3: CLOUD CONFIGS MANAGER -->
+      <section id="tab-configs" class="panel-tab-page hidden">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading" data-i18n="p_cfg_heading">Cloud Configuration Manager</h1>
+            <p class="page-sub" data-i18n="p_cfg_sub">Create, share, and hotload presets directly into your game without restarting.</p>
+          </div>
+          <button id="create-config-btn" class="btn-primary-glow btn-sm">
+            <i data-lucide="plus"></i>
+            <span data-i18n="p_btn_create_cfg">Create New Config</span>
+          </button>
+        </div>
+
+        <div id="configs-list-grid" class="configs-grid mt-6">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+
+      <!-- SECTION 4: HWID RESET TOOL -->
+      <section id="tab-hwid" class="panel-tab-page hidden">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading" data-i18n="p_hwid_heading">HWID Hardware Management</h1>
+            <p class="page-sub" data-i18n="p_hwid_sub">PC locking is required to secure your active license and account.</p>
+          </div>
+        </div>
+
+        <div class="panel-card glass-panel mt-6 max-w-lg">
+          <div class="hwid-status-box">
+            <div class="hwid-icon-group">
+              <i data-lucide="cpu" class="text-lime icon-lg"></i>
+              <div>
+                <h4 data-i18n="p_hwid_current_title">Current Registered HWID:</h4>
+                <code id="current-hwid-str" class="hwid-code-block">DESKTOP-9X82F-88A92-SPRING</code>
+              </div>
+            </div>
+            
+            <div class="divider-line my-4"></div>
+
+            <p class="hwid-explanation" data-i18n="p_hwid_explanation">
+              You are granted <strong>1 free automated HWID reset</strong> when changing PC components or upgrading your system.
+            </p>
+
+            <button id="reset-hwid-btn" class="btn-primary-glow w-full mt-4">
+              <i data-lucide="refresh-cw"></i>
+              <span id="reset-hwid-btn-text" data-i18n="p_btn_reset_hwid">Reset HWID Lock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: SUPPORT & TICKETS -->
+      <section id="tab-support" class="panel-tab-page hidden">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading" data-i18n="p_support_heading">Customer Support</h1>
+            <p class="page-sub" data-i18n="p_support_sub">Need assistance with injection, offsets, or configuration? We're available 24/7.</p>
+          </div>
+        </div>
+
+        <div class="panel-stats-grid mt-6">
+          <div class="panel-card glass-panel hover-card" style="cursor: default;">
+            <div class="card-icon-box text-lime"><i data-lucide="shield-check"></i></div>
+            <div class="card-meta">
+              <span class="card-label">Direct Web Helpdesk</span>
+              <span class="card-value" data-i18n="p_sup_ticket_val">Live Online Support</span>
+              <span class="card-sub" data-i18n="p_sup_ticket_sub">Automatic offset resolution &amp; ticketing</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel hover-card" style="cursor: default;">
+            <div class="card-icon-box text-cyan"><i data-lucide="help-circle"></i></div>
+            <div class="card-meta">
+              <span class="card-label">Documentation &amp; FAQ</span>
+              <span class="card-value">rykga.com Knowledgebase</span>
+              <span class="card-sub" data-i18n="p_sup_faq_sub">Installation, VAC bypass guides &amp; presets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Ticket Submission Form -->
+        <div class="panel-card glass-panel mt-6 max-w-lg">
+          <h3 class="config-name mb-2" style="font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+            <i data-lucide="message-square" class="text-lime"></i>
+            <span>Submit a Support Inquiry</span>
+          </h3>
+          <form id="support-ticket-form" class="key-activation-form mt-4">
+            <div class="form-group">
+              <label for="ticket-subject-select">Inquiry Category</label>
+              <select id="ticket-subject-select" class="form-input">
+                <option value="offsets">CS2 Latest Patch &amp; Offsets Auto-Sync</option>
+                <option value="hwid">Hardware Change / HWID Assistance</option>
+                <option value="injection">DirectX 11 Overlay / Injection Troubleshooting</option>
+                <option value="payment">License Key &amp; Subscription Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ticket-message-input">Detailed Description</label>
+              <textarea id="ticket-message-input" class="form-input" rows="3" placeholder="Explain what happened or request assistance..." required></textarea>
+            </div>
+            <button type="submit" id="submit-ticket-btn" class="btn-primary-glow w-full">
+              <i data-lucide="send"></i>
+              <span>Send Ticket to Helpdesk</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Create Config Modal -->
+  <div id="create-config-modal" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i data-lucide="cloud-plus" class="text-lime"></i>
+          <h3 id="modal-cfg-title">Create Cloud Configuration</h3>
+        </div>
+        <button id="close-cfg-modal-btn" class="modal-close-btn" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="new-config-form" class="key-activation-form">
+          <div class="form-group">
+            <label for="new-cfg-name-input">Configuration Name</label>
+            <input type="text" id="new-cfg-name-input" class="form-input" placeholder="e.g., Supreme Legit Bhop &amp; Trigger" required>
+          </div>
+          <div class="form-group">
+            <label for="new-cfg-style-select">Preset Style &amp; Badge</label>
+            <select id="new-cfg-style-select" class="form-input">
+              <option value="LEGIT">LEGIT (Subtle smoothing &amp; silent bhop)</option>
+              <option value="PRO">PRO (Movement-focused, edgebug alerts)</option>
+              <option value="HVH">HVH (Aggressive recoil control &amp; trigger)</option>
+              <option value="CUSTOM">CUSTOM (Balanced all-round)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="new-cfg-desc-input">Preset Notes / Description</label>
+            <input type="text" id="new-cfg-desc-input" class="form-input" placeholder="Custom preset created from user panel.">
+          </div>
+          <button type="submit" class="btn-primary-glow w-full mt-4">
+            <i data-lucide="save"></i>
+            <span>Save &amp; Generate Cloud Share Code</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Panel Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>

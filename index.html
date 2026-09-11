@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>spring — premium cs2 subtick software &amp; loader</title>
+  <meta name="description" content="spring — premium movement-oriented CS2 subtick software, edgebug, jumpbug, dynamic island in-game HUD and custom loader.">
+  <meta name="theme-color" content="#0e0e11">
+  <link rel="canonical" href="https://rykga.com/">
+  <meta property="og:title" content="spring — CS2 Subtick Engine &amp; In-Game Overlay">
+  <meta property="og:description" content="Subtick movement precision, real-time Dynamic Island HUD, VAC-Live bypass and custom glass loader.">
+  <meta property="og:url" content="https://rykga.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-bg-base text-text-primary font-sans antialiased">
+
+  <!-- Floating Pill Navbar -->
+  <header class="navbar-header">
+    <nav class="pill-nav glass-nav">
+      <a href="#" class="brand-link">
+        <div class="brand-logo-icon">
+          <span class="logo-dot"></span>
+        </div>
+        <span class="brand-name">spring</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#hero" class="nav-item active">
+          <i data-lucide="house" class="nav-icon"></i>
+          <span data-i18n="nav_home">Home</span>
+        </a>
+        <a href="#pricing" class="nav-item">
+          <i data-lucide="shopping-bag" class="nav-icon"></i>
+          <span data-i18n="nav_pricing">Pricing</span>
+        </a>
+        <a href="panel.html" class="nav-item">
+          <i data-lucide="layout-dashboard" class="nav-icon"></i>
+          <span data-i18n="nav_panel">Panel</span>
+        </a>
+        <a href="panel.html#download" class="nav-item">
+          <i data-lucide="download" class="nav-icon"></i>
+          <span data-i18n="nav_download">Download</span>
+        </a>
+      </div>
+
+      <!-- Language Selector & CTA -->
+      <div class="nav-actions">
+        <div class="lang-dropdown">
+          <button id="lang-btn" class="lang-btn" aria-label="Language selector">
+            <i data-lucide="globe" class="icon-sm"></i>
+            <span id="current-lang-text">EN</span>
+            <i data-lucide="chevron-down" class="icon-xs arrow-lang"></i>
+          </button>
+          <div id="lang-menu" class="lang-menu glass-panel hidden">
+            <button class="lang-option active" data-lang="en">🇬🇧 English (EN)</button>
+            <button class="lang-option" data-lang="hu">🇭🇺 Magyar (HU)</button>
+          </div>
+        </div>
+
+        <a href="panel.html" class="btn-nav-buy"><span data-i18n="btn_login_panel">Open Panel</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-wrapper">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-bg-orbs">
+        <div class="hero-orb orb-primary"></div>
+        <div class="hero-orb orb-accent"></div>
+        <div class="bg-wallpaper"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title" data-i18n="hero_title">
+          <span class="gradient-text">spring</span> — the cleanest <br>CS2 product on the market.
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+          flawless subtick movement, aesthetic visual modules, and vac-live undetected status. what else could you ask for?
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="panel.html" class="btn-primary-glow">
+            <i data-lucide="user-check"></i>
+            <span data-i18n="btn_panel_cta">User Dashboard</span>
+          </a>
+          <a href="#pricing" class="btn-secondary-glass">
+            <span data-i18n="btn_buy_now">Get It Now</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="panel.html#support" class="btn-secondary-glass">
+            <i data-lucide="life-buoy"></i>
+            <span data-i18n="btn_support">Helpdesk &amp; Guides</span>
+          </a>
+        </div>
+
+        <!-- Mascot Hero Preview with Jump-Roping Angel Mascot -->
+        <div class="mascot-hero-container">
+          <div class="mascot-glow"></div>
+          <img src="image copy.png" alt="spring angel mascot" class="mascot-img hero-angel-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Spring Section -->
+    <section class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag" data-i18n="why_tag">Why spring?</span>
+        <h2 class="section-title" data-i18n="why_title">nothing superfluous.</h2>
+        <p class="section-desc" data-i18n="why_desc">
+          our product focuses on delivering a smooth, enjoyable gameplay experience, achieved by polishing each core feature to absolute perfection.
+        </p>
+      </div>
+
+      <!-- Spotlight Feature Card with Sitting Angel Mascot -->
+      <div class="spotlight-grid">
+        <div class="spotlight-mascot">
+          <div class="mascot-aura"></div>
+          <img src="image.png" alt="spring angel sitting mascot" class="spotlight-img sitting-angel-img">
+        </div>
+
+        <div class="spotlight-content">
+          <h3 class="spotlight-heading" data-i18n="spotlight_heading">
+            the smoothest bunnyhop you have ever seen.<br>
+            <span class="text-muted">just like every movement feature ^^</span>
+          </h3>
+
+          <div class="divider-line"></div>
+
+          <blockquote class="testimonial-quote" data-i18n="testimonial_quote">
+            "insanely clean software, was hitting edgebugs seamlessly on premier while listening to tracks on dynamic island. movement feels like butter. easily 10/10 recommended."
+          </blockquote>
+
+          <div class="author-info">
+            <p class="author-name">Dimas</p>
+            <p class="author-role" data-i18n="author_role">CS2 & OSU Creator · 100k followers</p>
+          </div>
+
+          <div class="spotlight-actions">
+            <a href="#pricing" class="btn-primary-glow btn-sm">
+              <span data-i18n="btn_buy_product">Get Product</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="panel.html" class="btn-secondary-glass btn-sm">
+              <i data-lucide="layout-dashboard"></i>
+              <span data-i18n="btn_panel_cta">Control Panel</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Banner -->
+      <div class="stats-banner glass-panel">
+        <div class="stat-box">
+          <div class="stat-num-group">
+            <span class="stat-num gradient-text">50+</span>
+            <span class="stat-tag">FEATURES</span>
+          </div>
+          <p class="stat-sub" data-i18n="stat1_sub">and every single one tuned to perfection!</p>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-num-group">
+            <span class="stat-num gradient-text">&lt; 2%</span>
+            <span class="stat-tag">FPS USAGE</span>
+          </div>
+          <p class="stat-sub" data-i18n="stat2_sub">zero frame drops — your game performance stays untouched</p>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-num-group">
+            <span class="stat-num gradient-text">24/7</span>
+            <span class="stat-tag">SUPPORT</span>
+          </div>
+          <p class="stat-sub" data-i18n="stat3_sub">active 24/7 web ticket support with fast response times x_o</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Island Interactive Feature -->
+    <section id="dynamic-island" class="section-container">
+      <div class="section-header text-center">
+        <h2 class="section-title">
+          living <span class="gradient-text underline-lime">Dynamic Island</span> in CS2.
+        </h2>
+        <p class="section-desc" data-i18n="island_desc">
+          media playback, notifications, c4 bomb timer, incoming grenades, enemy loadout — all in a sleek pill at the top of your screen.
+          <span class="text-faint">just like on your favorite phone! ^_^</span>
+        </p>
+      </div>
+
+      <div class="dynamic-island-demo-grid">
+        <!-- Interactive Widget Preview -->
+        <div class="island-widget-wrapper glass-panel">
+          <div class="island-screen-bar">
+            <!-- Dynamic Island Interactive Component -->
+            <div id="island-pill" class="island-pill island-state-media">
+              <!-- Content injected by app.js -->
+            </div>
+          </div>
+
+          <div class="island-controls-hint">
+            <i data-lucide="sparkles" class="text-lime"></i>
+            <span data-i18n="island_hint">Interactive Dynamic Island simulator — pick a category on the right</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Island Features List -->
+        <div class="island-feature-list">
+          <ul class="feature-menu-list">
+            <li class="island-tab-item active" data-mode="media">
+              <div class="icon-sq"><i data-lucide="music-2"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_media_title">media</div>
+                <div class="tab-desc" data-i18n="tab_media_desc">compatible with Spotify, Apple Music, YouTube, SoundCloud — song info right in the pill! ♪(´▽｀)♪</div>
+              </div>
+            </li>
+
+            <li class="island-tab-item" data-mode="notifications">
+              <div class="icon-sq"><i data-lucide="bell-ring"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_notif_title">notifications</div>
+                <div class="tab-desc" data-i18n="tab_notif_desc">system alerts: volume, brightness, ping, and server connectivity. (｡◕‿◕｡)</div>
+              </div>
+            </li>
+
+            <li class="island-tab-item" data-mode="bomb">
+              <div class="icon-sq"><i data-lucide="bomb"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_bomb_title">bomb timer</div>
+                <div class="tab-desc" data-i18n="tab_bomb_desc">planted C4 countdown and millisecond precision defuse indicator. (；´o`)</div>
+              </div>
+            </li>
+
+            <li class="island-tab-item" data-mode="grenades">
+              <div class="icon-sq"><i data-lucide="flame"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_grenade_title">grenade alert</div>
+                <div class="tab-desc" data-i18n="tab_grenade_desc">instant warning when a flashbang, smoke or molotov is flying towards your sector! Σ(°ロ°)</div>
+              </div>
+            </li>
+
+            <li class="island-tab-item" data-mode="loadout">
+              <div class="icon-sq"><i data-lucide="package"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_loadout_title">loadout esp</div>
+                <div class="tab-desc" data-i18n="tab_loadout_desc">enemy primary weapons, defuse kits and C4 carrier at a glance. (｀・ω・´) quick overview.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Grid Features -->
+    <section class="section-container">
+      <div class="section-header text-center">
+        <h2 class="section-title" data-i18n="inside_title">what's inside spring</h2>
+        <p class="section-desc" data-i18n="inside_desc">hover over any icon — every single module is alive and handcrafted.</p>
+      </div>
+
+      <div class="feature-cards-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="move-right" class="feature-icon text-lime"></i>
+          </div>
+          <h4 data-i18n="f1_title">subtick movement</h4>
+          <p data-i18n="f1_desc">bhop, edge-bug, jump-bug & pixel-surf working seamlessly on every valve server!</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="crosshair" class="feature-icon text-rose"></i>
+          </div>
+          <h4 data-i18n="f2_title">subtle aimbot</h4>
+          <p data-i18n="f2_desc">humanized smoothing, seeded triggerbot, standalone RCS recoil control. (◕‿◕)</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="sliders-horizontal" class="feature-icon text-cyan"></i>
+          </div>
+          <h4 data-i18n="f3_title">hud customization</h4>
+          <p data-i18n="f3_desc">multiple aesthetic themes, full RGB picker, and clean glassmorphism UI.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="cloud-check" class="feature-icon text-emerald"></i>
+          </div>
+          <h4 data-i18n="f4_title">cloud configs</h4>
+          <p data-i18n="f4_desc">configurations sync instantly across your devices via shareable codes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="zap" class="feature-icon text-amber"></i>
+          </div>
+          <h4 data-i18n="f5_title">native performance</h4>
+          <p data-i18n="f5_desc">compiled native code with under 2% CPU and GPU overhead!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-container">
+      <div class="section-header text-left">
+        <span class="pricing-badge-pill">
+          <i data-lucide="tag"></i>
+          <span data-i18n="pricing_tag">Pricing</span>
+        </span>
+        <h2 class="section-title mt-4" data-i18n="pricing_title">straightforward, affordable plans.</h2>
+        <p class="section-desc mt-2" data-i18n="pricing_desc">
+          one all-inclusive software, four durations. no hidden upsells, locked features or recurring auto-bills.
+        </p>
+      </div>
+
+      <!-- Pricing Tier Selector List -->
+      <div class="pricing-wrapper mt-8">
+        <div id="tier-list" class="tier-list-container">
+          <!-- Tier Item 1: 14 Days -->
+          <div class="tier-row" data-tier="14" data-price="4.99" data-perday="0.35">
+            <div class="tier-left">
+              <span class="tier-duration">14 days</span>
+            </div>
+            <span class="tier-rate">$0.35 / day</span>
+            <div class="tier-right">
+              <span class="tier-price">$4.99</span>
+            </div>
+          </div>
+
+          <!-- Tier Item 2: 30 Days (Popular) -->
+          <div class="tier-row active" data-tier="30" data-price="7.99" data-perday="0.26">
+            <span class="active-indicator-bar"></span>
+            <div class="tier-left">
+              <span class="tier-duration">30 days</span>
+              <span class="badge-popular"><i data-lucide="crown"></i> popular</span>
+            </div>
+            <span class="tier-rate">$0.26 / day</span>
+            <div class="tier-right">
+              <span class="tier-price">$7.99</span>
+            </div>
+          </div>
+
+          <!-- Tier Item 3: 90 Days -->
+          <div class="tier-row" data-tier="90" data-price="18.99" data-perday="0.21">
+            <div class="tier-left">
+              <span class="tier-duration">90 days</span>
+            </div>
+            <span class="tier-rate">$0.21 / day</span>
+            <div class="tier-right">
+              <span class="tier-price">$18.99</span>
+              <span class="discount-tag">−20%</span>
+            </div>
+          </div>
+
+          <!-- Tier Item 4: 180 Days -->
+          <div class="tier-row" data-tier="180" data-price="32.99" data-perday="0.18">
+            <div class="tier-left">
+              <span class="tier-duration">180 days</span>
+            </div>
+            <span class="tier-rate">$0.18 / day</span>
+            <div class="tier-right">
+              <span class="tier-price">$32.99</span>
+              <span class="discount-tag">−30%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout Box & Features Summary -->
+        <div class="checkout-grid mt-8">
+          <div class="checkout-summary">
+            <span id="selected-tier-label" class="tier-summary-label">30 days</span>
+            <div class="tier-big-price-wrapper">
+              <span id="selected-tier-price" class="tier-big-price">$7.99</span>
+            </div>
+            <p id="selected-tier-rate" class="tier-summary-rate">~$0.26 / day, one-time payment</p>
+          </div>
+
+          <div class="checkout-card glass-panel">
+            <div class="card-header-text" data-i18n="included_title">WHAT'S INCLUDED</div>
+            <ul class="included-list">
+              <li><i data-lucide="check" class="text-lime"></i> <span data-i18n="inc_1">full features unlocked</span></li>
+              <li><i data-lucide="check" class="text-lime"></i> <span data-i18n="inc_2">all updates and game patches included</span></li>
+              <li><i data-lucide="check" class="text-lime"></i> <span data-i18n="inc_3">priority 24/7 web ticket support</span></li>
+              <li><i data-lucide="check" class="text-lime"></i> <span data-i18n="inc_4">1 subscription freeze allowance</span></li>
+              <li><i data-lucide="check" class="text-lime"></i> <span data-i18n="inc_5">1 automated HWID reset</span></li>
+            </ul>
+            <p class="hwid-note" data-i18n="hwid_note">additional HWID resets available through panel</p>
+
+            <button id="buy-action-btn" class="btn-primary-glow w-full mt-4">
+              <span id="buy-btn-text">purchase 30 days</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="brand-logo-icon">
+          <span class="logo-dot"></span>
+        </div>
+        <span class="brand-name">spring</span>
+        <span class="copyright-text">&copy; 2026 spring software &bull; rykga.com. All rights reserved.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="panel.html"><i data-lucide="layout-dashboard"></i> User Panel</a>
+        <a href="panel.html#download"><i data-lucide="download"></i> Download Loader</a>
+        <a href="https://rykga.com"><i data-lucide="globe"></i> Official Site</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Checkout & Instant License Modal -->
+  <div id="checkout-modal" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i data-lucide="sparkles" class="text-lime"></i>
+          <h3 id="modal-tier-title">Complete Subscription</h3>
+        </div>
+        <button id="close-modal-btn" class="modal-close-btn" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="checkout-product-preview">
+          <img src="image copy.png" alt="Spring mascot" class="modal-mascot-img">
+          <div class="preview-text">
+            <h4 class="preview-name">spring CS2 Subtick Client</h4>
+            <p id="modal-tier-details" class="preview-desc">30 Days Unlimited Access • $7.99</p>
+          </div>
+        </div>
+
+        <div class="license-generated-box mt-4">
+          <label class="modal-label">Generated Instant License Key:</label>
+          <div class="key-display-wrapper">
+            <code id="modal-generated-key">SPRING-30DAY-2026-X89F</code>
+            <button id="copy-modal-key-btn" class="btn-copy-code" title="Copy Key">
+              <i data-lucide="copy"></i>
+            </button>
+          </div>
+          <p class="modal-hint">Key is automatically saved. You can activate it instantly in your user dashboard.</p>
+        </div>
+
+        <div class="modal-actions mt-6">
+          <button id="activate-now-btn" class="btn-primary-glow w-full">
+            <i data-lucide="key"></i>
+            <span>Open Panel &amp; Activate Key</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>

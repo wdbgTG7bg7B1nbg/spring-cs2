@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>SpringInternal</AssemblyName>
+    <ApplicationTitle>Spring CS2 Internal Engine</ApplicationTitle>
+    <Product>Spring Internal In-Process Module</Product>
+    <Version>2.4.1</Version>
+  </PropertyGroup>
+
+</Project>

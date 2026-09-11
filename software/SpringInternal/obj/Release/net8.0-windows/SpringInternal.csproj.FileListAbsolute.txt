@@ -1,0 +1,11 @@
+C:\Users\Bence\Downloads\lclipped\software\publish\SpringInternal.deps.json
+C:\Users\Bence\Downloads\lclipped\software\publish\SpringInternal.dll
+C:\Users\Bence\Downloads\lclipped\software\publish\SpringInternal.pdb
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.AssemblyInfoInputs.cache
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.AssemblyInfo.cs
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.csproj.CoreCompileInputs.cache
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.dll
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\refint\SpringInternal.dll
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.pdb
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\ref\SpringInternal.dll
