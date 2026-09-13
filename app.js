@@ -709,20 +709,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Dynamic Island Pill interactive click
-    if (islandPill) {
-      islandPill.style.cursor = 'pointer';
-      islandPill.addEventListener('click', () => {
-        const modes = ['media', 'notifications', 'bomb', 'grenades', 'loadout'];
-        const nextIdx = (modes.indexOf(currentIslandMode) + 1) % modes.length;
-        const nextMode = modes[nextIdx];
-        
-        document.querySelectorAll('.island-tab-item').forEach(i => {
-          i.classList.toggle('active', i.dataset.mode === nextMode);
-        });
-        updateDynamicIsland(nextMode);
-        showToast(currentLang === 'hu' ? `Dynamic Island mód: ${nextMode.toUpperCase()}` : `Dynamic Island HUD: ${nextMode.toUpperCase()}`, 'info');
-      });
     }
 
     window.onLangChanged = () => {
