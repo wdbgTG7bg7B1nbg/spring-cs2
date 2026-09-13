@@ -92,6 +92,10 @@
           <i data-lucide="cpu"></i>
           <span data-i18n="p_tab_hwid">HWID Reset</span>
         </li>
+        <li class="sidebar-item" data-tab="soundpack">
+          <i data-lucide="volume-2"></i>
+          <span data-i18n="p_tab_soundpack">Soundpacks & Player</span>
+        </li>
         <li class="sidebar-item" data-tab="support">
           <i data-lucide="life-buoy"></i>
           <span data-i18n="p_tab_support">Support & Tickets</span>
@@ -257,7 +261,46 @@
         </div>
       </section>
 
-      <!-- SECTION 5: SUPPORT & TICKETS -->
+      <!-- SECTION 5: SOUNDPACKS & WEB AUDIO PLAYER -->
+      <section id="tab-soundpack" class="panel-tab-page hidden">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-heading">Custom Hitmarker Soundpacks</h1>
+            <p class="page-sub">Listen to audio previews and sync custom hitmarker soundpacks to your CS2 client.</p>
+          </div>
+        </div>
+
+        <div class="panel-stats-grid mt-6">
+          <div class="panel-card glass-panel hover-card" onclick="playAudioPreview('valve_bell')">
+            <div class="card-icon-box text-lime"><i data-lucide="play-circle"></i></div>
+            <div class="card-meta">
+              <span class="card-label">Soundpack #1</span>
+              <span class="card-value">Valve Metallic Bell</span>
+              <span class="card-sub text-lime">Click to audition preview ♪</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel hover-card" onclick="playAudioPreview('rust_headshot')">
+            <div class="card-icon-box text-cyan"><i data-lucide="play-circle"></i></div>
+            <div class="card-meta">
+              <span class="card-label">Soundpack #2</span>
+              <span class="card-value">Rust Crunch Headshot</span>
+              <span class="card-sub text-cyan">Click to audition preview ♪</span>
+            </div>
+          </div>
+
+          <div class="panel-card glass-panel hover-card" onclick="playAudioPreview('bubble_pop')">
+            <div class="card-icon-box text-emerald"><i data-lucide="play-circle"></i></div>
+            <div class="card-meta">
+              <span class="card-label">Soundpack #3</span>
+              <span class="card-value">Soft Bubble Pop</span>
+              <span class="card-sub text-emerald">Click to audition preview ♪</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: SUPPORT & TICKETS -->
       <section id="tab-support" class="panel-tab-page hidden">
         <div class="page-title-row">
           <div>

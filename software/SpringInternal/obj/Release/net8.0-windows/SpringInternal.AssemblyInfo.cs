@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpringInternal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.4.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.4.1+1546b167b075665a8ae3ea395683e34c96f21fed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.4.1+34ddf63b60e695ee9753cea77f30ec3ddf56fe20")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spring Internal In-Process Module")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpringInternal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.4.1.0")]

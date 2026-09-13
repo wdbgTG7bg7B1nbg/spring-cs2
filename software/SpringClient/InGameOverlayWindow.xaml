@@ -474,6 +474,14 @@
                                         <CheckBox x:Name="ChkOverlaySkinEnable" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
                                     </Grid>
 
+                                    <TextBlock Text="Cosmetic Preset Selection:" FontSize="11" Foreground="#9999aa" Margin="0,0,0,4"/>
+                                    <ComboBox x:Name="CmbSkinPreset" Style="{StaticResource GlassComboBox}" SelectedIndex="0" Margin="0,0,0,8">
+                                        <ComboBoxItem Content="Preset #1 • Emerald Doppler (Tier 1)"/>
+                                        <ComboBoxItem Content="Preset #2 • Sapphire Glass (Tier 1)"/>
+                                        <ComboBoxItem Content="Preset #3 • Crimson Ruby (Tier 1)"/>
+                                        <ComboBoxItem Content="Preset #4 • Blue Gem #661 Case Hardened"/>
+                                    </ComboBox>
+
                                     <TextBlock Text="Active Knife:" FontSize="11" Foreground="#9999aa" Margin="0,0,0,4"/>
                                     <ComboBox x:Name="CmbOverlayKnife" Style="{StaticResource GlassComboBox}" SelectedIndex="0" Margin="0,0,0,8">
                                         <ComboBoxItem Content="Karambit • Doppler Phase 2 Emerald"/>
@@ -491,6 +499,16 @@
                                         <ComboBoxItem Content="Specialist Gloves • Crimson Kimono"/>
                                         <ComboBoxItem Content="Sport Gloves • Amphibious"/>
                                     </ComboBox>
+
+                                    <Border Background="#181822" CornerRadius="8" Padding="8" Margin="0,0,0,10">
+                                        <StackPanel>
+                                            <Grid>
+                                                <TextBlock Text="Sticker Scratch Wear" FontSize="11" Foreground="#FFFFFF"/>
+                                                <TextBlock x:Name="TxtStickerWearVal" Text="0.00 (Factory New)" FontWeight="Bold" FontSize="11" Foreground="#84cc16" HorizontalAlignment="Right"/>
+                                            </Grid>
+                                            <Slider x:Name="SliderStickerWear" Minimum="0.0" Maximum="1.0" Value="0.0" SmallChange="0.05" Margin="0,4,0,0"/>
+                                        </StackPanel>
+                                    </Border>
 
                                     <Button x:Name="BtnOverlayApplySkins" Content="✨ Apply to CS2 Viewmodel" Style="{StaticResource PrimaryGlowButton}" Height="36" FontSize="12" Click="BtnOverlayApplySkins_Click"/>
                                 </StackPanel>

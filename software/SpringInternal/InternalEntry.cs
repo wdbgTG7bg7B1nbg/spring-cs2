@@ -206,6 +206,13 @@ namespace SpringInternal
             thread.Start();
         }
 
+        // Enhanced Combat & Skinchanger Parameters
+        public static bool DynamicBonePriorityEnabled { get; set; } = true;
+        public static bool AutoWallFilterEnabled { get; set; } = true;
+        public static int MinDamageThreshold { get; set; } = 15;
+        public static float StickerWear { get; set; } = 0.0f; // 0.0 (New) - 1.0 (Scratched)
+        public static int ActivePresetId { get; set; } = 1; // 1 = Emerald, 2 = Sapphire, 3 = Ruby, 4 = Blue Gem T1
+
         private static unsafe void ProcessInternalSkinChanger(IntPtr localPlayerPawn)
         {
             try
@@ -239,8 +246,17 @@ namespace SpringInternal
                         {
                             WriteDirect<short>(weaponEntity + 0x1BA, (short)SelectedKnifeDef);
                         }
-                        WriteDirect<int>(weaponEntity + 0x1520, KnifePaintKit); // Emerald (415)
-                        WriteDirect<float>(weaponEntity + 0x1524, 0.001f);      // Factory New
+                        
+                        // Select paintkit based on ActivePresetId
+                        int paintKit = KnifePaintKit;
+                        if (ActivePresetId == 1) paintKit = 415;      // Emerald
+                        else if (ActivePresetId == 2) paintKit = 416; // Sapphire
+                        else if (ActivePresetId == 3) paintKit = 417; // Ruby
+                        else if (ActivePresetId == 4) paintKit = 44;  // Case Hardened Blue Gem
+
+                        WriteDirect<int>(weaponEntity + 0x1520, paintKit);
+                        WriteDirect<float>(weaponEntity + 0x1524, 0.001f);      // Factory New wear
+                        WriteDirect<float>(weaponEntity + 0x152C, StickerWear); // Sticker wear
                         WriteDirect<int>(weaponEntity + 0x1518, -1);            // Force refresh
                     }
                 }
