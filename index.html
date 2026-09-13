@@ -196,74 +196,92 @@
       </div>
     </section>
 
-    <!-- Dynamic Island Interactive Feature -->
-    <section id="dynamic-island" class="section-container">
+    <!-- Combat & Visual Engine Showcase -->
+    <section id="combat-visuals" class="section-container">
       <div class="section-header text-center">
         <h2 class="section-title">
-          living <span class="gradient-text underline-lime">Dynamic Island</span> in CS2.
+          next-gen <span class="gradient-text underline-lime">Combat & Visual Engine</span> in CS2.
         </h2>
-        <p class="section-desc" data-i18n="island_desc">
-          media playback, notifications, c4 bomb timer, incoming grenades, enemy loadout — all in a sleek pill at the top of your screen.
-          <span class="text-faint">just like on your favorite phone! ^_^</span>
+        <p class="section-desc" data-i18n="combat_desc">
+          subtick precision aimbot, independent vertical/horizontal RCS, 3D skeleton ESP, hit-rate filters, and advanced trajectory visualizers.
+          <span class="text-faint">zero lag, maximum clarity! ^_^</span>
         </p>
       </div>
 
       <div class="dynamic-island-demo-grid">
-        <!-- Interactive Dynamic Island Widget Preview -->
+        <!-- Interactive Combat & Visual Widget Preview -->
         <div class="island-widget-wrapper glass-panel">
           <div class="island-screen-bar">
-            <!-- Dynamic Island Component -->
-            <div id="island-pill" class="island-pill island-state-media">
-              <!-- Content injected by app.js -->
+            <!-- Combat / Visual Preview Component -->
+            <div id="combat-preview-card" class="combat-preview-card">
+              <div class="preview-header">
+                <span class="badge-dot active"></span>
+                <span id="combat-preview-title" class="preview-title">🎯 Subtick Aimbot & FOV Engine</span>
+                <span class="preview-tag text-lime">ACTIVE</span>
+              </div>
+              <div id="combat-preview-body" class="preview-body">
+                <div class="preview-metric">
+                  <span class="metric-label">Targeting Bone:</span>
+                  <span class="metric-val text-cyan">Head / Neck (Bone #6)</span>
+                </div>
+                <div class="preview-metric">
+                  <span class="metric-label">FOVs Cone:</span>
+                  <span class="metric-val text-lime">4.5° (Visible Ring)</span>
+                </div>
+                <div class="preview-metric">
+                  <span class="metric-label">Curve Smoothness:</span>
+                  <span class="metric-val text-amber">3.5x Humanized</span>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="island-controls-hint">
             <i data-lucide="sparkles" class="text-lime"></i>
-            <span data-i18n="island_hint">Interactive Dynamic Island simulator — pick a category on the right</span>
+            <span data-i18n="combat_hint">Interactive Combat & Visual Engine — click any module on the right</span>
           </div>
         </div>
 
-        <!-- Dynamic Island Features List -->
+        <!-- Combat & Visual Features List -->
         <div class="island-feature-list">
           <ul class="feature-menu-list">
-            <li class="island-tab-item active" data-mode="media">
-              <div class="icon-sq"><i data-lucide="music-2"></i></div>
+            <li class="island-tab-item active" data-mode="aimbot">
+              <div class="icon-sq"><i data-lucide="crosshair"></i></div>
               <div class="tab-info">
-                <div class="tab-title" data-i18n="tab_media_title">media</div>
-                <div class="tab-desc" data-i18n="tab_media_desc">compatible with Spotify, Apple Music, YouTube, SoundCloud — song info right in the pill! ♪(´▽｀)♪</div>
+                <div class="tab-title" data-i18n="tab_aimbot_title">Subtick Aimbot & FOV</div>
+                <div class="tab-desc" data-i18n="tab_aimbot_desc">Bone priority selection (Head, Chest, Nearest) with customizable FOV overlay ring and smooth humanized curve tracking.</div>
               </div>
             </li>
 
-            <li class="island-tab-item" data-mode="notifications">
-              <div class="icon-sq"><i data-lucide="bell-ring"></i></div>
+            <li class="island-tab-item" data-mode="rcs">
+              <div class="icon-sq"><i data-lucide="sliders"></i></div>
               <div class="tab-info">
-                <div class="tab-title" data-i18n="tab_notif_title">notifications</div>
-                <div class="tab-desc" data-i18n="tab_notif_desc">system alerts: volume, brightness, ping, and server connectivity. (｡◕‿◕｡)</div>
+                <div class="tab-title" data-i18n="tab_rcs_title">Independent Pitch & Yaw RCS</div>
+                <div class="tab-desc" data-i18n="tab_rcs_desc">Standalone Recoil Control System with separate vertical (pitch) and horizontal (yaw) compensation sliders.</div>
+              </div>
+            </li>
+
+            <li class="island-tab-item" data-mode="skeleton">
+              <div class="icon-sq"><i data-lucide="eye"></i></div>
+              <div class="tab-info">
+                <div class="tab-title" data-i18n="tab_skeleton_title">3D Skeleton & Health ESP</div>
+                <div class="tab-desc" data-i18n="tab_skeleton_desc">Full bone hierarchy skeleton rendering, color-coded health bars, weapon icons, and enemy snaplines.</div>
               </div>
             </li>
 
             <li class="island-tab-item" data-mode="bomb">
               <div class="icon-sq"><i data-lucide="bomb"></i></div>
               <div class="tab-info">
-                <div class="tab-title" data-i18n="tab_bomb_title">bomb timer</div>
-                <div class="tab-desc" data-i18n="tab_bomb_desc">planted C4 countdown and millisecond precision defuse indicator. (；´o`)</div>
+                <div class="tab-title" data-i18n="tab_bomb_title">C4 Bomb & Defuse HUD</div>
+                <div class="tab-desc" data-i18n="tab_bomb_desc">Real-time C4 plant countdown, site A/B indicator, and millisecond defuse timer HUD bar.</div>
               </div>
             </li>
 
             <li class="island-tab-item" data-mode="grenades">
               <div class="icon-sq"><i data-lucide="flame"></i></div>
               <div class="tab-info">
-                <div class="tab-title" data-i18n="tab_grenade_title">grenade alert</div>
-                <div class="tab-desc" data-i18n="tab_grenade_desc">instant warning when a flashbang, smoke or molotov is flying towards your sector! Σ(°ロ°)</div>
-              </div>
-            </li>
-
-            <li class="island-tab-item" data-mode="loadout">
-              <div class="icon-sq"><i data-lucide="package"></i></div>
-              <div class="tab-info">
-                <div class="tab-title" data-i18n="tab_loadout_title">loadout esp</div>
-                <div class="tab-desc" data-i18n="tab_loadout_desc">enemy primary weapons, defuse kits and C4 carrier at a glance. (｀・ω・´) quick overview.</div>
+                <div class="tab-title" data-i18n="tab_grenade_title">Grenade Trajectory Helper</div>
+                <div class="tab-desc" data-i18n="tab_grenade_desc">Parabolic physics arcs, grenade warning rings, and jump-throw lineup markers.</div>
               </div>
             </li>
           </ul>

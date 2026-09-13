@@ -580,7 +580,7 @@
                         </ScrollViewer>
                     </Grid>
 
-                    <!-- TAB 4: VISUALS &amp; DYNAMIC ISLAND -->
+                    <!-- TAB 4: VISUALS &amp; RADAR -->
                     <Grid x:Name="TabVisualsView" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -588,8 +588,8 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" Margin="0,0,0,16">
-                            <TextBlock x:Name="TxtVisualsHeading" Text="DirectX 11 Dynamic Island &amp; Visuals" FontSize="20" FontWeight="Bold" Foreground="#FFFFFF"/>
-                            <TextBlock x:Name="TxtVisualsSub" Text="Floating pill HUD in CS2 with real-time Spotify, bomb countdown, and grenade indicators." FontSize="12" Foreground="#858595" Margin="0,3,0,0"/>
+                            <TextBlock x:Name="TxtVisualsHeading" Text="DirectX 11 Visuals &amp; ESP Engine" FontSize="20" FontWeight="Bold" Foreground="#FFFFFF"/>
+                            <TextBlock x:Name="TxtVisualsSub" Text="ESP boxes, skeleton bone connectors, C4 bomb timer, and 3D sound radar." FontSize="12" Foreground="#858595" Margin="0,3,0,0"/>
                         </StackPanel>
 
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -601,8 +601,8 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock Text="Enable Dynamic Island In-Game Overlay" FontWeight="Bold" FontSize="14" Foreground="#FFFFFF"/>
-                                            <TextBlock Text="Renders glassmorphic pill widget directly atop CS2 window (DirectX 11 hook)." FontSize="11" Foreground="#78788a" Margin="0,2,0,0"/>
+                                            <TextBlock Text="Enable DirectX 11 In-Game Overlay" FontWeight="Bold" FontSize="14" Foreground="#FFFFFF"/>
+                                            <TextBlock Text="Renders glassmorphic transparent overlay directly atop CS2 window (DirectX 11 hook)." FontSize="11" Foreground="#78788a" Margin="0,2,0,0"/>
                                         </StackPanel>
                                         <CheckBox x:Name="ChkIslandEnable" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ModernSwitch}" IsChecked="True"/>
                                     </Grid>

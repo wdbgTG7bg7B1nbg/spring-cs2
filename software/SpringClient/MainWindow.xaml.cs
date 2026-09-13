@@ -438,7 +438,7 @@ namespace SpringClient
             await Task.Delay(300);
             LogMessage("-> Hooking CreateMove & EdgeBug fall-velocity calculator...");
             await Task.Delay(300);
-            LogMessage("-> Initializing DirectX 11 Dynamic Island in-game overlay...");
+            LogMessage("-> Initializing DirectX 11 in-game master overlay...");
 
             LogMessage(_currentLang == "hu" 
                 ? ">>> SIKER: Spring Subtick Engine aktív! Nyomj INSERT-et a játékban." 
@@ -453,7 +453,7 @@ namespace SpringClient
                 var overlay = new InGameOverlayWindow();
                 overlay.Show();
                 overlay.SyncEngineState();
-                LogMessage(">>> In-Game Overlay & Dynamic Island HUD launched.");
+                LogMessage(">>> In-Game Overlay & Master HUD launched.");
             }
             catch (Exception ex)
             {
@@ -462,8 +462,8 @@ namespace SpringClient
 
             MessageBox.Show(
                 _currentLang == "hu" 
-                    ? "A Spring sikeresen csatolva a CS2-höz!\n\nMegnyílt a játékbeli Dynamic Island és a Menü.\nNyomd meg az INSERT billentyűt a menü elrejtéséhez vagy megjelenítéséhez." 
-                    : "Spring has been successfully injected into Counter-Strike 2!\n\nThe In-Game Overlay & Dynamic Island HUD are now active on your screen.\nPress INSERT in-game to toggle the menu.",
+                    ? "A Spring sikeresen csatolva a CS2-höz!\n\nMegnyílt a játékbeli Menü.\nNyomd meg az INSERT billentyűt a menü elrejtéséhez vagy megjelenítéséhez." 
+                    : "Spring has been successfully injected into Counter-Strike 2!\n\nThe In-Game Master Overlay is now active on your screen.\nPress INSERT in-game to toggle the menu.",
                 "Spring CS2 Subtick", 
                 MessageBoxButton.OK, 
                 MessageBoxImage.Information
@@ -727,7 +727,7 @@ namespace SpringClient
             NavOverview.Content = isHu ? "⚡ Vezérlőpult & Injektálás" : "⚡ Dashboard & Inject";
             NavMovement.Content = isHu ? "🏃 Subtick Mozgás" : "🏃 Subtick Movement";
             NavAimbot.Content = isHu ? "🎯 Harc & Aimbot" : "🎯 Combat & Aimbot";
-            NavVisuals.Content = isHu ? "✨ Vizuál & Dynamic Island" : "✨ Visuals & Radar";
+            NavVisuals.Content = isHu ? "✨ Vizuál & ESP" : "✨ Visuals & Radar";
             NavInventory.Content = isHu ? "🗡️ Kések & Kesztyűk" : "🗡️ Knives & Skins";
             NavHwid.Content = isHu ? "🔒 HWID & Licenc" : "🔒 HWID & License";
 
@@ -755,8 +755,8 @@ namespace SpringClient
             TxtAimbotSub.Text = isHu ? "Finomhangolt célzásrásegítés, önálló RCS visszarúgás és seeded triggerbot." : "Humanized smoothing curves, standalone recoil pitch/yaw, and seeded triggerbot.";
 
             // Visuals Tab
-            TxtVisualsHeading.Text = isHu ? "DirectX 11 Dynamic Island & Vizuál" : "DirectX 11 Dynamic Island & Visuals";
-            TxtVisualsSub.Text = isHu ? "Lebegő kapszula HUD a CS2-ben valós idejű Spotify zeneinformációval és bomba időzítővel." : "Floating pill HUD in CS2 with real-time Spotify, bomb countdown, and grenade indicators.";
+            TxtVisualsHeading.Text = isHu ? "DirectX 11 Vizuális & ESP Motor" : "DirectX 11 Visuals & ESP Engine";
+            TxtVisualsSub.Text = isHu ? "ESP boxok, csontváz csontvonalak, C4 bombaidőzítő és 3D lépés radar." : "ESP boxes, skeleton bone connectors, C4 bomb timer, and 3D sound radar.";
 
             // Configs Tab
             TxtConfigsHeading.Text = isHu ? "Felhős Konfigurációk Szinkronizálása" : "Cloud Configuration Sync";

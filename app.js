@@ -207,19 +207,19 @@ document.addEventListener('DOMContentLoaded', () => {
       stat2_sub: "zero frame drops — your game performance stays untouched",
       stat3_sub: "active 24/7 web ticket support with fast response times x_o",
 
-      // Dynamic Island
-      island_desc: 'media playback, notifications, c4 bomb timer, incoming grenades, enemy loadout — all in a sleek pill at the top of your screen. <span class="text-faint">just like on your favorite phone! ^_^</span>',
-      island_hint: "Interactive Dynamic Island simulator — pick a category on the right",
-      tab_media_title: "media",
-      tab_media_desc: "compatible with Spotify, Apple Music, YouTube, SoundCloud — song info right in the pill! ♪(´▽｀)♪",
-      tab_notif_title: "notifications",
-      tab_notif_desc: "system alerts: volume, brightness, ping, and server connectivity. (｡◕‿◕｡)",
-      tab_bomb_title: "bomb timer",
-      tab_bomb_desc: "planted C4 countdown and millisecond precision defuse indicator. (；´o`)",
-      tab_grenade_title: "grenade alert",
-      tab_grenade_desc: "instant warning when a flashbang, smoke or molotov is flying towards your sector! Σ(°ロ°)",
-      tab_loadout_title: "loadout esp",
-      tab_loadout_desc: "enemy primary weapons, defuse kits and C4 carrier at a glance. (｀・ω・´) quick overview.",
+      // Combat & Visual Engine Showcase
+      combat_desc: 'subtick precision aimbot, independent vertical/horizontal RCS, 3D skeleton ESP, hit-rate filters, and advanced trajectory visualizers. <span class="text-faint">zero lag, maximum clarity! ^_^</span>',
+      combat_hint: "Interactive Combat & Visual Engine — click any module on the right",
+      tab_aimbot_title: "Subtick Aimbot & FOV",
+      tab_aimbot_desc: "Bone priority selection (Head, Chest, Nearest) with customizable FOV overlay ring and smooth humanized curve tracking.",
+      tab_rcs_title: "Independent Pitch & Yaw RCS",
+      tab_rcs_desc: "Standalone Recoil Control System with separate vertical (pitch) and horizontal (yaw) compensation sliders.",
+      tab_skeleton_title: "3D Skeleton & Health ESP",
+      tab_skeleton_desc: "Full bone hierarchy skeleton rendering, color-coded health bars, weapon icons, and enemy snaplines.",
+      tab_bomb_title: "C4 Bomb & Defuse HUD",
+      tab_bomb_desc: "Real-time C4 plant countdown, site A/B indicator, and millisecond defuse timer HUD bar.",
+      tab_grenade_title: "Grenade Trajectory Helper",
+      tab_grenade_desc: "Parabolic physics arcs, grenade warning rings, and jump-throw lineup markers.",
 
       // Inside Features
       inside_title: "what's inside spring",
@@ -472,78 +472,51 @@ document.addEventListener('DOMContentLoaded', () => {
   function initLandingPage() {
     let selectedTier = '30';
 
-    const ISLAND_CONTENT = {
-      en: {
-        media: {
-          icon: 'music-2',
-          title: 'Spotify • Lil Peep - Star Shopping',
-          subtitle: '02:14 / 03:41 • ♪(´▽｀)♪'
-        },
-        notifications: {
-          icon: 'bell-ring',
-          title: 'System • Audio Master 80%',
-          subtitle: 'Display Brightness: 100% • (｡◕‿◕｡)'
-        },
-        bomb: {
-          icon: 'bomb',
-          title: 'C4 Planted at Site B',
-          subtitle: '⏱ 34.2s remaining • (；´o`)'
-        },
-        grenades: {
-          icon: 'flame',
-          title: '⚠️ Flashbang / Molotov Incoming',
-          subtitle: 'Vector: Long A • Σ(°ロ°)'
-        },
-        loadout: {
-          icon: 'package',
-          title: 'Enemies Loadout (TAB)',
-          subtitle: 'AK-47 (x3), AWP (x1), C4 • (`・ω・´)'
-        }
+    const COMBAT_PREVIEWS = {
+      aimbot: {
+        title: '🎯 Subtick Aimbot & FOV Engine',
+        body: `
+          <div class="preview-metric"><span class="metric-label">Targeting Bone:</span><span class="metric-val text-cyan">Head / Neck (Bone #6)</span></div>
+          <div class="preview-metric"><span class="metric-label">FOV Cone:</span><span class="metric-val text-lime">4.5° (Visible Overlay Ring)</span></div>
+          <div class="preview-metric"><span class="metric-label">Curve Smoothness:</span><span class="metric-val text-amber">3.5x Humanized</span></div>
+          <div class="preview-metric"><span class="metric-label">Hit-Check:</span><span class="metric-val text-lime">Raycast Visible Only</span></div>
+        `
       },
-      hu: {
-        media: {
-          icon: 'music-2',
-          title: 'Spotify • Lil Peep - Star Shopping',
-          subtitle: '02:14 / 03:41 • ♪(´▽｀)♪'
-        },
-        notifications: {
-          icon: 'bell-ring',
-          title: 'Rendszer • Hangerő 80%',
-          subtitle: 'Kijelző Fényerő: 100% • (｡◕‿◕｡)'
-        },
-        bomb: {
-          icon: 'bomb',
-          title: 'C4 Élesítve a B Ponton',
-          subtitle: '⏱ 34.2 mp van hátra • (；´o`)'
-        },
-        grenades: {
-          icon: 'flame',
-          title: '⚠️ Érkező Vakító / Molotov Gránát',
-          subtitle: 'Irány: Long A • Σ(°ロ°)'
-        },
-        loadout: {
-          icon: 'package',
-          title: 'Ellenfél Felszerelés (TAB)',
-          subtitle: 'AK-47 (x3), AWP (x1), C4 • (`・ω・´)'
-        }
+      rcs: {
+        title: '⚡ Independent Pitch & Yaw RCS',
+        body: `
+          <div class="preview-metric"><span class="metric-label">Vertical Pitch RCS:</span><span class="metric-val text-rose">75% Compensation</span></div>
+          <div class="preview-metric"><span class="metric-label">Horizontal Yaw RCS:</span><span class="metric-val text-cyan">65% Compensation</span></div>
+          <div class="preview-metric"><span class="metric-label">Recoil Smooth:</span><span class="metric-val text-lime">2.5x Decay Curve</span></div>
+        `
+      },
+      skeleton: {
+        title: '☠️ 3D Skeleton & Box ESP',
+        body: `
+          <div class="preview-metric"><span class="metric-label">Skeleton Hierarchy:</span><span class="metric-val text-lime">19 Bone Connectors</span></div>
+          <div class="preview-metric"><span class="metric-label">Health Bar:</span><span class="metric-val text-lime">Dynamic Color-Coded</span></div>
+          <div class="preview-metric"><span class="metric-label">Weapon Icons:</span><span class="metric-val text-cyan">AK-47 / AWP / C4</span></div>
+          <div class="preview-metric"><span class="metric-label">Target Snaplines:</span><span class="metric-val text-amber">Bottom Screen Anchor</span></div>
+        `
+      },
+      bomb: {
+        title: '💣 C4 Bomb & Defuse HUD',
+        body: `
+          <div class="preview-metric"><span class="metric-label">Planted Site:</span><span class="metric-val text-rose">B Site (Active Countdown)</span></div>
+          <div class="preview-metric"><span class="metric-label">Bomb Timer:</span><span class="metric-val text-amber">34.2s Remaining</span></div>
+          <div class="preview-metric"><span class="metric-label">Defuse Check:</span><span class="metric-val text-lime">5.0s Defuse Kit OK</span></div>
+        `
+      },
+      grenades: {
+        title: '🎯 Grenade Lineup & Trajectory',
+        body: `
+          <div class="preview-metric"><span class="metric-label">Physics Model:</span><span class="metric-val text-cyan">CS2 Parabolic Arc</span></div>
+          <div class="preview-metric"><span class="metric-label">Jump-Throw Indicator:</span><span class="metric-val text-lime">Subtick Auto-Release</span></div>
+          <div class="preview-metric"><span class="metric-label">Proximity Alert:</span><span class="metric-val text-rose">Molotov / Flashbang Active</span></div>
+        `
       }
     };
 
-    const islandPill = document.getElementById('island-pill');
-    let currentIslandMode = 'media';
-
-    function updateDynamicIsland(mode) {
-      if (!islandPill) return;
-      currentIslandMode = mode || currentIslandMode;
-      const langData = ISLAND_CONTENT[currentLang] || ISLAND_CONTENT.en;
-      const d = langData[currentIslandMode] || langData.media;
-      islandPill.innerHTML = `
-        <div class="island-pill-icon"><i data-lucide="${d.icon}"></i></div>
-        <div class="island-pill-text">
-          <span class="island-pill-title">${d.title}</span>
-          <span class="island-pill-sub">${d.subtitle}</span>
-        </div>`;
-      initLucideIcons();
     }
 
     // Dynamic island tab clicks

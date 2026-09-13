@@ -264,19 +264,11 @@ namespace SpringClient
 
                 if (!string.IsNullOrEmpty(song))
                 {
-                    TxtIslandIcon.Text = "🎵";
-                    TxtIslandTitle.Text = song.Length > 32 ? song.Substring(0, 32) + "..." : song;
-                    TxtIslandSub.Text = "Spotify • Playing";
-                    if (TxtSpotifyTrackStatus != null)
-                        TxtSpotifyTrackStatus.Text = $"Active: {song}";
+                    // Track title detected
                 }
                 else
                 {
-                    TxtIslandIcon.Text = "⚡";
-                    TxtIslandTitle.Text = "Spring Subtick Engine";
-                    TxtIslandSub.Text = "128-Tick Active • CS2 Ready";
-                    if (TxtSpotifyTrackStatus != null)
-                        TxtSpotifyTrackStatus.Text = spotifyProcs.Length > 0 ? "Spotify Open (No active playback)" : "Spotify client not detected";
+                    // No playback detected
                 }
             }
             catch {}
@@ -375,7 +367,7 @@ namespace SpringClient
             if (TxtOverlayMovTitle != null) TxtOverlayMovTitle.Text = isHu ? "Subtick Mozgás Finomhangolás" : "Subtick Movement Tuning";
             if (TxtOverlayCombatTitle != null) TxtOverlayCombatTitle.Text = isHu ? "Harc, Visszarúgás & Triggerbot" : "Combat, Recoil Control & Triggerbot";
             if (TxtOverlayVisTitle != null) TxtOverlayVisTitle.Text = isHu ? "ESP, 3rd Person & Vizuális Telemetria" : "ESP, 3rd Person & Visual Telemetry";
-            if (TxtOverlayIslandTitle != null) TxtOverlayIslandTitle.Text = isHu ? "Dynamic Island & Spotify Beállítások" : "Dynamic Island & Spotify Settings";
+            if (TxtOverlayHudTitle != null) TxtOverlayHudTitle.Text = isHu ? "C4 Bombázo & Radar HUD" : "Standalone C4 Bomb & Radar HUD";
 
             TxtOverlayFooter.Text = isHu 
                 ? "Spring CS2 Játékbeli Mester Szoftver • Nyomj INSERT-et a menü ki/bekapcsolásához"
@@ -391,14 +383,14 @@ namespace SpringClient
             ViewCombat.Visibility = Visibility.Collapsed;
             ViewVisuals.Visibility = Visibility.Collapsed;
             ViewSkins.Visibility = Visibility.Collapsed;
-            ViewIsland.Visibility = Visibility.Collapsed;
+            if (ViewHud != null) ViewHud.Visibility = Visibility.Collapsed;
 
             if (sender == TabNavDashboard && ViewDashboard != null) ViewDashboard.Visibility = Visibility.Visible;
             else if (sender == TabNavMovement) ViewMovement.Visibility = Visibility.Visible;
             else if (sender == TabNavCombat) ViewCombat.Visibility = Visibility.Visible;
             else if (sender == TabNavVisuals) ViewVisuals.Visibility = Visibility.Visible;
             else if (sender == TabNavSkins) ViewSkins.Visibility = Visibility.Visible;
-            else if (sender == TabNavIsland) ViewIsland.Visibility = Visibility.Visible;
+            else if (sender == TabNavHud && ViewHud != null) ViewHud.Visibility = Visibility.Visible;
         }
 
         private async void BtnOverlaySyncOffsets_Click(object sender, RoutedEventArgs e)
@@ -451,12 +443,6 @@ namespace SpringClient
                 SpeedometerWidget.Visibility = (ChkOverlaySpeedo.IsChecked == true) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void ChkShowIsland_Changed(object sender, RoutedEventArgs e)
-        {
-            if (DynamicIslandPill != null)
-                DynamicIslandPill.Visibility = (ChkShowIsland.IsChecked == true) ? Visibility.Visible : Visibility.Collapsed;
-        }
-
         public void SyncEngineState()
         {
             try
@@ -478,64 +464,53 @@ namespace SpringClient
             catch {}
         }
 
-        private void ChkOverlayThirdperson_Changed(object sender, RoutedEventArgs e)
-        {
-            SyncEngineState();
-        }
+        private void ChkOverlayThirdperson_Changed(object sender, RoutedEventArgs e) => SyncEngineState();
 
         private void SliderOverlayThirdpersonDist_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayThirdpersonDistVal != null)
-                TxtOverlayThirdpersonDistVal.Text = $"{e.NewValue:0} units";
+            if (TxtOverlayThirdpersonDistVal != null) TxtOverlayThirdpersonDistVal.Text = $"{e.NewValue:0} units";
             SyncEngineState();
         }
 
         private void SliderOverlayTol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayTol != null)
-                TxtOverlayTol.Text = $"{e.NewValue:0.0} ms";
+            if (TxtOverlayTol != null) TxtOverlayTol.Text = $"{e.NewValue:0.0} ms";
             SyncEngineState();
         }
 
         private void SliderOverlayFov_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayFovVal != null)
-                TxtOverlayFovVal.Text = $"{e.NewValue:0.0}°";
+            if (TxtOverlayFovVal != null) TxtOverlayFovVal.Text = $"{e.NewValue:0.0}°";
             SyncEngineState();
         }
 
         private void SliderOverlaySmooth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlaySmooth != null)
-                TxtOverlaySmooth.Text = $"{e.NewValue:0.0}x";
+            if (TxtOverlaySmooth != null) TxtOverlaySmooth.Text = $"{e.NewValue:0.0}x";
             SyncEngineState();
         }
 
         private void SliderOverlayRcsPitch_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayRcsPitchVal != null)
-                TxtOverlayRcsPitchVal.Text = $"{e.NewValue:0}%";
+            if (TxtOverlayRcsPitchVal != null) TxtOverlayRcsPitchVal.Text = $"{e.NewValue:0}%";
             SyncEngineState();
         }
 
         private void SliderOverlayRcsYaw_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayRcsYawVal != null)
-                TxtOverlayRcsYawVal.Text = $"{e.NewValue:0}%";
+            if (TxtOverlayRcsYawVal != null) TxtOverlayRcsYawVal.Text = $"{e.NewValue:0}%";
             SyncEngineState();
         }
 
         private void SliderOverlayTriggerDelay_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayTriggerDelayVal != null)
-                TxtOverlayTriggerDelayVal.Text = $"{e.NewValue:0} ms";
+            if (TxtOverlayTriggerDelayVal != null) TxtOverlayTriggerDelayVal.Text = $"{e.NewValue:0} ms";
             SyncEngineState();
         }
 
         private void SliderOverlayHitchance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (TxtOverlayHitchanceVal != null)
-                TxtOverlayHitchanceVal.Text = $"{e.NewValue:0}%";
+            if (TxtOverlayHitchanceVal != null) TxtOverlayHitchanceVal.Text = $"{e.NewValue:0}%";
             SyncEngineState();
         }
 
@@ -543,9 +518,7 @@ namespace SpringClient
         {
             string knife = (CmbOverlayKnife.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Karambit";
             string gloves = (CmbOverlayGloves.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Sport Gloves";
-            TxtIslandIcon.Text = "🗡️";
-            TxtIslandTitle.Text = $"{knife}";
-            TxtIslandSub.Text = $"{gloves} • Viewmodel Sync OK";
+            MessageBox.Show($"Applied {knife} & {gloves} to CS2 viewmodel!", "Spring CS2 Skin Changer", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

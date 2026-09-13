@@ -82,27 +82,6 @@
             </StackPanel>
         </Border>
 
-        <!-- ================================================================= -->
-        <!-- COMPACT DYNAMIC ISLAND (Real Spotify & Subtick Status) -->
-        <!-- ================================================================= -->
-        <Border x:Name="DynamicIslandPill" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,14,0,0"
-                Background="#E60a0a12" BorderBrush="#3384cc16" BorderThickness="1" CornerRadius="18"
-                Padding="12,6" Cursor="Hand" MouseDown="Island_MouseDown">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="18" ShadowDepth="0" Color="#000000" Opacity="0.8"/>
-            </Border.Effect>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <Border Width="8" Height="8" CornerRadius="4" Background="#84cc16" Margin="0,0,8,0">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="6" Color="#84cc16" ShadowDepth="0" Opacity="0.9"/>
-                    </Border.Effect>
-                </Border>
-                <TextBlock x:Name="TxtIslandIcon" Text="🎵" FontSize="12" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                <TextBlock x:Name="TxtIslandTitle" Text="Spotify • Searching..." FontWeight="SemiBold" FontSize="11" Foreground="#FFFFFF" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBlock x:Name="TxtIslandSub" Text="128-Tick Active" FontSize="10" Foreground="#84cc16" VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
-
         <!-- Bottom Speedometer (Clean & Subtle, Hidden by default) -->
         <Border x:Name="SpeedometerWidget" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="24,0,0,24"
                 Background="#CC0a0a12" BorderBrush="#25ffffff" BorderThickness="1" CornerRadius="8" Padding="10,6">
@@ -178,7 +157,7 @@
                                 <RadioButton x:Name="TabNavCombat" Content="🎯 Combat &amp; RCS" Style="{StaticResource NavTabButton}" Checked="OverlayNav_Checked"/>
                                 <RadioButton x:Name="TabNavVisuals" Content="✨ Visuals &amp; 3rd Person" Style="{StaticResource NavTabButton}" Checked="OverlayNav_Checked"/>
                                 <RadioButton x:Name="TabNavSkins" Content="🗡️ Knives &amp; Gloves" Style="{StaticResource NavTabButton}" Checked="OverlayNav_Checked"/>
-                                <RadioButton x:Name="TabNavIsland" Content="🏝️ Dynamic Island" Style="{StaticResource NavTabButton}" Checked="OverlayNav_Checked"/>
+                                <RadioButton x:Name="TabNavHud" Content="💣 C4 &amp; Visual HUD" Style="{StaticResource NavTabButton}" Checked="OverlayNav_Checked"/>
                             </StackPanel>
 
                             <!-- Angel Mascot Card -->
@@ -291,6 +270,21 @@
                                     </Grid>
 
                                     <Grid Margin="0,0,0,8">
+                                        <TextBlock Text="Draw FOV Circle Overlay" Foreground="#E0E0E8" FontSize="12"/>
+                                        <CheckBox x:Name="ChkOverlayDrawFov" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,8">
+                                        <TextBlock Text="Target Priority Bone:" Foreground="#E0E0E8" FontSize="12" VerticalAlignment="Center"/>
+                                        <ComboBox x:Name="CmbOverlayBone" Style="{StaticResource GlassComboBox}" Width="160" HorizontalAlignment="Right" SelectedIndex="0">
+                                            <ComboBoxItem Content="Head / Neck (Bone #6)"/>
+                                            <ComboBoxItem Content="Chest / Spine (Bone #4)"/>
+                                            <ComboBoxItem Content="Pelvis (Bone #0)"/>
+                                            <ComboBoxItem Content="Nearest Visible Bone"/>
+                                        </ComboBox>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,8">
                                         <TextBlock Text="Silent Aim (Subtick Cam Snap)" Foreground="#E0E0E8" FontSize="12"/>
                                         <CheckBox x:Name="ChkOverlaySilentAim" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="False"/>
                                     </Grid>
@@ -395,13 +389,33 @@
 
                                     <!-- Player ESP Cards -->
                                     <Grid Margin="0,0,0,8">
-                                        <TextBlock Text="Enemy 2D Bounding Box &amp; Health ESP" Foreground="#E0E0E8" FontSize="12"/>
-                                        <CheckBox Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                        <TextBlock Text="Enemy Box ESP Style:" Foreground="#E0E0E8" FontSize="12" VerticalAlignment="Center"/>
+                                        <ComboBox x:Name="CmbOverlayBoxStyle" Style="{StaticResource GlassComboBox}" Width="160" HorizontalAlignment="Right" SelectedIndex="0">
+                                            <ComboBoxItem Content="2D Corner Box"/>
+                                            <ComboBoxItem Content="2D Full Bounding Box"/>
+                                            <ComboBoxItem Content="3D Cube Box"/>
+                                            <ComboBoxItem Content="Disabled"/>
+                                        </ComboBox>
                                     </Grid>
 
                                     <Grid Margin="0,0,0,8">
                                         <TextBlock Text="Player Skeleton Bone ESP" Foreground="#E0E0E8" FontSize="12"/>
-                                        <CheckBox Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                        <CheckBox x:Name="ChkOverlaySkeleton" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,8">
+                                        <TextBlock Text="Health Bar &amp; HP Text ESP" Foreground="#E0E0E8" FontSize="12"/>
+                                        <CheckBox x:Name="ChkOverlayHealthBar" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,8">
+                                        <TextBlock Text="Weapon &amp; Ammo Count ESP" Foreground="#E0E0E8" FontSize="12"/>
+                                        <CheckBox x:Name="ChkOverlayWeapon" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,8">
+                                        <TextBlock Text="Target Snaplines (Screen Bottom)" Foreground="#E0E0E8" FontSize="12"/>
+                                        <CheckBox x:Name="ChkOverlaySnaplines" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
                                     </Grid>
 
                                     <!-- 3rd Person Perspective Card -->
@@ -460,13 +474,12 @@
                                         <CheckBox x:Name="ChkOverlaySkinEnable" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
                                     </Grid>
 
-                                    <TextBlock Text="Active Knife Model:" FontSize="11" Foreground="#9999aa" Margin="0,0,0,4"/>
+                                    <TextBlock Text="Active Knife:" FontSize="11" Foreground="#9999aa" Margin="0,0,0,4"/>
                                     <ComboBox x:Name="CmbOverlayKnife" Style="{StaticResource GlassComboBox}" SelectedIndex="0" Margin="0,0,0,8">
-                                        <ComboBoxItem Content="Karambit • Doppler Phase 2"/>
+                                        <ComboBoxItem Content="Karambit • Doppler Phase 2 Emerald"/>
                                         <ComboBoxItem Content="Butterfly Knife • Fade 100%"/>
-                                        <ComboBoxItem Content="M9 Bayonet • Gamma Doppler Emerald"/>
+                                        <ComboBoxItem Content="M9 Bayonet • Lore Factory New"/>
                                         <ComboBoxItem Content="Skeleton Knife • Crimson Web"/>
-                                        <ComboBoxItem Content="Talon Knife • Marble Fade"/>
                                         <ComboBoxItem Content="Kukri Knife • Case Hardened Blue Gem"/>
                                     </ComboBox>
 
@@ -483,24 +496,24 @@
                                 </StackPanel>
                             </ScrollViewer>
 
-                            <!-- 5. ISLAND HUD VIEW -->
-                            <StackPanel x:Name="ViewIsland" Visibility="Collapsed">
-                                <TextBlock x:Name="TxtOverlayIslandTitle" Text="Dynamic Island &amp; Spotify Settings" FontSize="16" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,0,0,12"/>
+                            <!-- 5. HUD VIEW -->
+                            <StackPanel x:Name="ViewHud" Visibility="Collapsed">
+                                <TextBlock x:Name="TxtOverlayHudTitle" Text="Standalone C4 Bomb &amp; Radar HUD" FontSize="16" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,0,0,12"/>
 
                                 <Grid Margin="0,0,0,8">
-                                    <TextBlock Text="Show Dynamic Island In-Game" Foreground="#E0E0E8" FontSize="12"/>
-                                    <CheckBox x:Name="ChkShowIsland" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True" Checked="ChkShowIsland_Changed" Unchecked="ChkShowIsland_Changed"/>
+                                    <TextBlock Text="Enable C4 Planted Timer &amp; Defuse HUD" Foreground="#E0E0E8" FontSize="12"/>
+                                    <CheckBox x:Name="ChkC4TimerHud" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
                                 </Grid>
 
                                 <Grid Margin="0,0,0,8">
-                                    <TextBlock Text="Real Spotify Playback Auto-Sync" Foreground="#E0E0E8" FontSize="12"/>
-                                    <CheckBox x:Name="ChkSpotifySync" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    <TextBlock Text="Show Enemy Loadout Summary" Foreground="#E0E0E8" FontSize="12"/>
+                                    <CheckBox x:Name="ChkEnemyLoadoutSummary" Style="{StaticResource ModernSwitch}" HorizontalAlignment="Right" IsChecked="True"/>
                                 </Grid>
 
                                 <Border Background="#161622" CornerRadius="8" Padding="12" Margin="0,10,0,0">
                                     <StackPanel>
-                                        <TextBlock Text="Spotify Windows Player Status:" FontSize="11" FontWeight="Bold" Foreground="#888899" Margin="0,0,0,4"/>
-                                        <TextBlock x:Name="TxtSpotifyTrackStatus" Text="Listening for Spotify Windows client..." FontSize="12" Foreground="#06b6d4"/>
+                                        <TextBlock Text="CS2 Match Telemetry HUD:" FontSize="11" FontWeight="Bold" Foreground="#888899" Margin="0,0,0,4"/>
+                                        <TextBlock Text="C4 Plant Status: Active (40.0s Timer) • Defuse Kit Check OK" FontSize="12" Foreground="#84cc16"/>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
