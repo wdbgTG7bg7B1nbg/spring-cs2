@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpringClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.4.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.4.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.4.1+72a8e22e5da8af762c84129d92fc49765294a449")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spring Subtick Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Spring CS2 Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.4.1.0")]

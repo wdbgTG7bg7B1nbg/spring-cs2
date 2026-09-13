@@ -9,3 +9,7 @@ C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-win
 C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\refint\SpringInternal.dll
 C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.pdb
 C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\ref\SpringInternal.dll
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\obj\Release\net8.0-windows\SpringInternal.sourcelink.json
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\bin\Release\net8.0-windows\SpringInternal.deps.json
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\bin\Release\net8.0-windows\SpringInternal.dll
+C:\Users\Bence\Downloads\lclipped\software\SpringInternal\bin\Release\net8.0-windows\SpringInternal.pdb

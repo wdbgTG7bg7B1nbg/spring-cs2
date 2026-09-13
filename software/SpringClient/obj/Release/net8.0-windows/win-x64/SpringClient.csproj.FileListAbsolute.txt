@@ -20,3 +20,4 @@ C:\Users\Bence\Downloads\lclipped\software\SpringClient\obj\Release\net8.0-windo
 C:\Users\Bence\Downloads\lclipped\software\SpringClient\obj\Release\net8.0-windows\win-x64\ref\SpringClient.dll
 C:\Users\Bence\Downloads\lclipped\software\SpringClient\obj\Release\net8.0-windows\win-x64\InGameOverlayWindow.baml
 C:\Users\Bence\Downloads\lclipped\software\SpringClient\obj\Release\net8.0-windows\win-x64\InGameOverlayWindow.g.cs
+C:\Users\Bence\Downloads\lclipped\software\SpringClient\obj\Release\net8.0-windows\win-x64\SpringClient.sourcelink.json
